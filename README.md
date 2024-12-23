@@ -1,7 +1,5 @@
-# SQLite-JsonPlayground
-
 SQLite JSON Playground
-This repository serves as a playground for my experimenting with SQLite's JSON functionality, specifically focusing on the json_each and json_extract functions. It is designed to help me practice querying nested JSON data stored in SQLite and explore dynamic SQL workflows.
+This repository serves as a playground for my experimenting with SQLite's JSON functionality, specifically focusing on the json_each and json_extract functions. It is dynamic SQL workflows.
 
 Features
 Dynamic JSON Queries:
