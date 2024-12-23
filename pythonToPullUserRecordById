@@ -1,0 +1,48 @@
+import sqlite3
+import csv
+
+def export_user_by_id_to_csv(db_file, user_id, output_file):
+    # Connect to the SQLite database
+    conn = sqlite3.connect(db_file)
+    cursor = conn.cursor()
+
+    # Query to extract a single user based on id
+    query = """
+    SELECT 
+      json_extract(value, '$.id') AS id,
+      json_extract(value, '$.name') AS name,
+      json_extract(value, '$.role') AS role,
+      json_extract(value, '$.salary') AS salary
+    FROM 
+      raw_json, 
+      json_each(raw_json.data)
+    WHERE 
+      json_extract(value, '$.id') = ?;
+    """
+
+    # Execute the query with the user_id parameter
+    cursor.execute(query, (user_id,))
+    result = cursor.fetchone()
+
+    if result:
+        # Save the result to a CSV file
+        with open(output_file, "w", newline="") as csvfile:
+            writer = csv.writer(csvfile)
+            # Write the header
+            writer.writerow(["id", "name", "role", "salary"])
+            # Write the data
+            writer.writerow(result)
+
+        print(f"User with ID {user_id} saved to {output_file}")
+    else:
+        print(f"No user found with ID {user_id}")
+
+    # Close the connection
+    conn.close()
+
+
+# Usage example:
+db_file = "EmployeeData.db"
+user_id = 200  # Change this single line to select a different user ID
+output_file = f"user_{user_id}_record.csv"
+export_user_by_id_to_csv(db_file, user_id, output_file)

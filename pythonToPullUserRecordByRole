@@ -1,0 +1,45 @@
+import sqlite3
+import csv
+
+def export_role_to_csv(db_file, role, output_file):
+    # Connect to the SQLite database
+    conn = sqlite3.connect(db_file)
+    cursor = conn.cursor()
+
+    # Query to extract records based on role
+    query = """
+    SELECT 
+      json_extract(value, '$.id') AS id,
+      json_extract(value, '$.name') AS name,
+      json_extract(value, '$.role') AS role,
+      json_extract(value, '$.salary') AS salary
+    FROM 
+      raw_json, 
+      json_each(raw_json.data)
+    WHERE 
+      json_extract(value, '$.role') = ?;
+    """
+
+    # Execute the query with the role parameter
+    cursor.execute(query, (role,))
+    results = cursor.fetchall()
+
+    # Save the results to a CSV file
+    with open(output_file, "w", newline="") as csvfile:
+        writer = csv.writer(csvfile)
+        # Write the header
+        writer.writerow(["id", "name", "role", "salary"])
+        # Write the data
+        writer.writerows(results)
+
+    print(f"Results for role '{role}' saved to {output_file}")
+
+    # Close the connection
+    conn.close()
+
+
+# Usage example:
+db_file = "EmployeeData.db"
+role = "DevOps"  # Change this single line to select a different role
+output_file = f"{role}_records.csv"
+export_role_to_csv(db_file, role, output_file)
