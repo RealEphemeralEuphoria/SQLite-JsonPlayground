@@ -1,0 +1,3 @@
+SELECT employeeId, role, email
+FROM employees
+WHERE role = 'Manager';

@@ -1,0 +1,3 @@
+SELECT employeeId, role, email
+FROM employees
+WHERE JSON_VALID(role) AND JSON_EXTRACT(role, '$.title') = 'Manager';

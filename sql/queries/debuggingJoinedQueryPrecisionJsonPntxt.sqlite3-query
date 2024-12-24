@@ -1,0 +1,23 @@
+SELECT 
+    employeeId, 
+    fullName, 
+    email, 
+    -- Handle role column with JSON or plain text
+    CASE 
+        WHEN JSON_VALID(role) AND JSON_TYPE(JSON_EXTRACT(role, '$.title')) = 'text'
+        THEN JSON_EXTRACT(role, '$.title')
+        ELSE role
+    END AS roleTitle, 
+    -- Handle department column with JSON or plain text
+    CASE 
+        WHEN JSON_VALID(department) AND JSON_TYPE(JSON_EXTRACT(department, '$.name')) = 'text'
+        THEN JSON_EXTRACT(department, '$.name')
+        ELSE department
+    END AS departmentName
+FROM employees
+WHERE 
+    -- Check for JSON role and title "Manager"
+    (JSON_VALID(role) AND JSON_EXTRACT(role, '$.title') = 'Manager')
+    OR 
+    -- Check for plain text role "Manager"
+    (NOT JSON_VALID(role) AND role = 'Manager');

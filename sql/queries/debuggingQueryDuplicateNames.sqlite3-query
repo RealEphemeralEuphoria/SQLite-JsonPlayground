@@ -1,0 +1,4 @@
+SELECT fullName, role, department, salary, hireDate, email, COUNT(*) AS occurrenceCount
+FROM employees
+GROUP BY fullName, role, department, salary, hireDate, email
+HAVING occurrenceCount > 1;
