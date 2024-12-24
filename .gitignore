@@ -1,7 +1,0 @@
-# Ignore SQLite database files
-*.db
-*.sqlite
-
-# Python cache
-__pycache__/
-*.pyc
