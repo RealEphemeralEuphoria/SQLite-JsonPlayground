@@ -1,0 +1,3 @@
+-- Migration #2: Example of adding a new column
+--ALTER TABLE my_data
+--ADD COLUMN roles TEXT;
