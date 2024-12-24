@@ -1,21 +1,17 @@
-SQLite JSON Playground
+# SQLite Playground
 
-This repository serves as a playground for my experimenting with SQLite's JSON functionality, specifically focusing on the json_each and json_extract functions. It is dynamic SQL workflows.
+This is a sample project structure for version-controlling SQL queries and schemas in SQLite.
 
-Features
+## Structure
 
-Dynamic JSON Queries:
-Extract specific fields using json_extract.
-Break down JSON arrays into individual rows with json_each.
+- **sql/migrations/**: Incremental changes to your database schema.
+- **sql/queries/**: Reusable SELECT or reporting queries.
+- **sql/schema_latest.sql**: A file to build the full schema from scratch.
+- **README.md**: Explanation and docs.
+- **.gitignore**: List of files/directories Git should ignore.
 
-Parameterized Queries:
-Select records by role or user ID without modifying multiple parts of the query.
+## Usage
 
-Integration with CSV:
-Export query results dynamically to CSV files.
-
-Scalable JSON Data:
-Work with datasets containing hundreds of nested JSON objects.
-
-Reusable Scripts:
-Modular Python and SQL scripts for testing.
+1. Run migrations with: `sqlite3 my_data.db < sql/migrations/001_create_my_data.sql`
+2. Insert or manipulate data as needed.
+3. Query data: `sqlite3 my_data.db < sql/queries/analytics_query.sql`
