@@ -1,0 +1,25 @@
+-- database: ../dbs/Employees_JSON_Mixed.db
+
+SELECT 
+    employeeId, 
+    fullName, 
+    -- Handle role column with JSON or plain text
+    CASE 
+        WHEN JSON_VALID(role) AND JSON_TYPE(JSON_EXTRACT(role, '$.title')) = 'text'
+        THEN JSON_EXTRACT(role, '$.title')
+        ELSE role 
+    END AS roleTitle, 
+    -- Handle department column with JSON or plain text
+    CASE 
+        WHEN JSON_VALID(department) AND JSON_TYPE(JSON_EXTRACT(department, '$.name')) = 'text'
+        THEN JSON_EXTRACT(department, '$.name')
+        ELSE department 
+    END AS departmentName, 
+    email 
+FROM employees
+WHERE 
+    -- Filter for plain text role as 'Manager'
+    role = 'Manager'
+    OR 
+    -- Filter for JSON role where title is 'Manager'
+    (JSON_VALID(role) AND JSON_EXTRACT(role, '$.title') = 'Manager');
