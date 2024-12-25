@@ -1,0 +1,10 @@
+UPDATE Dev;
+SET 
+    fullName = NULL,
+    role = NULL,
+    department = NULL,
+    salary = NULL,
+    hireDate = NULL,
+    email = NULL,
+    terminationDate = NULL
+WHERE employeeId = 51;
