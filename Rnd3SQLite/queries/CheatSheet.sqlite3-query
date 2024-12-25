@@ -94,3 +94,7 @@ WHERE
 
 ========================================
 
+#select by employee ID, display all fields.
+SELECT employeeId, fullName, role, department, salary, hireDate, email, terminationDate, rawData
+FROM Dev
+WHERE employeeId = 51;
