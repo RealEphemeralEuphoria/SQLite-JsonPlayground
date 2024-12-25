@@ -1,4 +1,4 @@
-UPDATE Dev;
+UPDATE Dev
 SET 
     fullName = NULL,
     role = NULL,
@@ -8,3 +8,89 @@ SET
     email = NULL,
     terminationDate = NULL
 WHERE employeeId = 51;
+========================================
+
+##Get the fullName from the JSON:
+SELECT json_extract(rawData, '$.fullName') AS fullName
+FROM Dev
+WHERE employeeId = 51;
+
+========================================
+
+##Get the roleTitle from the JSON:
+SELECT json_extract(rawData, '$.role.title') AS roleTitle
+FROM Dev
+WHERE employeeId = 51;
+
+========================================
+
+##Get the department.location from the JSON
+SELECT json_extract(rawData, '$.department.location') AS departmentLocation
+FROM Dev
+WHERE employeeId = 51;
+
+========================================
+
+#Get an Array using json_each. List all responsibilities for employeeId = 51.
+SELECT value AS responsibility
+FROM Dev, json_each(rawData, '$.role.responsibilities')
+WHERE employeeId = 51;
+
+========================================
+
+#Find Employees in a specific department
+SELECT * FROM Dev WHERE department = 'IT';
+
+========================================
+
+#Find Employees with a Specific Role:
+SELECT * FROM Dev WHERE role = 'Developer';
+
+========================================
+
+#Find Employees who make over $100000
+SELECT * FROM Dev WHERE salary > 100000;
+
+========================================
+
+#Find total Rows
+SELECT COUNT(*) AS totalEmployees FROM Dev;
+
+========================================
+
+#Group employees by department
+SELECT department, COUNT(*) AS totalEmployees
+FROM Dev
+GROUP BY department;
+
+========================================
+
+#Calculate Average salary
+SELECT AVG(salary) AS averageSalary FROM Dev;
+
+========================================
+
+#Calculate average salary by department
+SELECT 
+    department, 
+    AVG(salary) AS averageSalary
+FROM 
+    Dev
+GROUP BY 
+    department
+ORDER BY 
+    averageSalary DESC;
+
+========================================
+
+#Find employee with the highest salary
+SELECT 
+    fullName, 
+    salary
+FROM 
+    Dev
+WHERE 
+    salary = (SELECT MAX(salary) FROM Dev);
+
+========================================
+
