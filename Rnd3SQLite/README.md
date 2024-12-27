@@ -8,27 +8,27 @@ Technical Skills Assessment Study Document
 
     Ask Questions: Ensure you understand the requirements, constraints, and goals.
 
-        ##Example: "What is the expected output format for this data transformation?"
+        Example: "What is the expected output format for this data transformation?"
 
-        ##Example: "Should we prioritize performance over readability in this solution?"
+        Example: "Should we prioritize performance over readability in this solution?"
 
     Confirm Inputs and Outputs: Validate the provided data structure, expected results, and context of the problem.
 
 1.2 Break Down the Problem
 
-Understand the Scope: Decompose complex issues into smaller, manageable tasks.
+    Understand the Scope: Decompose complex issues into smaller, manageable tasks.
 
-Example: "First, I’ll extract data from the JSON structure. Then, I’ll transform it into a relational database format."
+        Example: "First, I’ll extract data from the JSON structure. Then, I’ll transform it into a relational database format."
 
 Plan the Steps:
 
-Extract data from JSON.
+        Extract data from JSON.
 
-Transform and normalize the data.
+        Transform and normalize the data.
 
-Load the data into a relational database.
+        Load the data into a relational database.
 
-Perform specific data manipulations and verify changes.
+        Perform specific data manipulations and verify changes.
 
 1.3 Articulate Technical Tradeoffs
 
