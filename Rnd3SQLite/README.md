@@ -6,13 +6,13 @@ Technical Skills Assessment Study Document
 
 1.1 Clarify the Problem
 
-    Ask Questions: Ensure you understand the requirements, constraints, and goals.
+    **Ask Questions: Ensure you understand the requirements, constraints, and goals**.
 
         Example: "What is the expected output format for this data transformation?"
 
         Example: "Should we prioritize performance over readability in this solution?"
 
-    Confirm Inputs and Outputs: Validate the provided data structure, expected results, and context of the problem.
+    **Confirm Inputs and Outputs: Validate the provided data structure, expected results, and context of the problem.**
 
 1.2 Break Down the Problem
 
