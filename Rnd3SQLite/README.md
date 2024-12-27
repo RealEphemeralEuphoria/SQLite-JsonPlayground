@@ -18,7 +18,9 @@ Technical Skills Assessment Study Document
 
     Understand the Scope: Decompose complex issues into smaller, manageable tasks.
 
-        Example: "First, I’ll extract data from the JSON structure. Then, I’ll transform it into a relational database format."
+        Example: "First, I’ll extract data from the JSON structure. 
+        
+        Then, we’ll transform it into a relational database format."
 
 Plan the Steps:
 
@@ -32,13 +34,13 @@ Plan the Steps:
 
 1.3 Articulate Technical Tradeoffs
 
-Consider: Performance vs. Maintainability
+    Consider: Performance vs. Maintainability
 
-Example: Using SQL string manipulation for immediate changes versus Python for greater control.
+        Example: Using SQL string manipulation for immediate changes versus Python for greater control.
 
-Consider: Automation vs. Manual Work
+    Consider: Automation vs. Manual Work
 
-Example: Writing scripts for repeated tasks instead of manual intervention for efficiency.
+        Example: Writing scripts for repeated tasks instead of manual intervention for efficiency.
 
 2. Key Technical Concepts
 
